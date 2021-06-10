@@ -1,0 +1,18 @@
+name: bootstrap_icons
+description: Boostrap Icons for Flutter
+version: 1.5.0
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: Bootstrap Icons
+      fonts:
+        - asset: fonts/bootstrap-icons.ttf
