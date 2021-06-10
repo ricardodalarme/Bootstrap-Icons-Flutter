@@ -47,4 +47,4 @@ If you want to contribute to this project, you may easily create issues and send
 ### Credits
 
 - Ricardo Dalarme (Package)
-- @twbs (Icons)
+- [@twbs](https://github.com/twbs) (Icons)
