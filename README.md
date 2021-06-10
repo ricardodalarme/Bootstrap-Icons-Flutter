@@ -1,10 +1,11 @@
 <p align="center">
-  <a href="https://v5.getbootstrap.com/">
+  <a href="https://pub.dev/packages/bootstrap_icons">
     <img src="https://v5.getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
   </a>
 </p>
 
-<h3 align="center">Bootstrap Icons for Flutter</h3>
+<h3 align="center"><a href="https://pub.dev/packages/bootstrap_icons">Bootstrap Icons for Flutter</a></h3>
+
 
 <p align="center">
   Implementation of Bootstrap Icons v1.5.0 in Flutter with over 1,300 icons..
