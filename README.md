@@ -28,7 +28,7 @@ dependencies:
 ### Usage
 
 ```dart
-import 'package:boostrap_icons/boostrap_icons.dart';
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 
 class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
