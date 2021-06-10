@@ -1,10 +1,20 @@
-# Boostrap Icons for Flutter
+<p align="center">
+  <a href="https://v5.getbootstrap.com/">
+    <img src="https://v5.getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
+  </a>
+</p>
 
-Implementation of [bootstrap icons](https://github.com/twbs/icons) v1.5.0 in Flutter  with over 1,300 icons.
+<h3 align="center">Bootstrap Icons for Flutter</h3>
+
+<p align="center">
+  Implementation of Bootstrap Icons v1.5.0 in Flutter with over 1,300 icons..
+  <br>
+  <a href="https://icons.getbootstrap.com/"><strong>Explore Bootstrap Icons »</strong></a>
+  <br>
+
+</p>
 
 [![Bootstrap Icons preview](https://github.com/twbs/icons/blob/main/.github/preview.png)](https://icons.getbootstrap.com)
-
-<a href="https://icons.getbootstrap.com/"><strong>Explore Bootstrap Icons »</strong></a>
 
 ### Installation
 
