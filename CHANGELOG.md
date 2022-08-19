@@ -1,3 +1,7 @@
+## 1.9.1
+
+- Updated to Bootstrap Icons v1.9.1.
+
 ## 1.8.1
 
 - Updated to Bootstrap Icons v1.8.1.
