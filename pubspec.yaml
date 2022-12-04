@@ -1,6 +1,6 @@
 name: bootstrap_icons
 description: Bootstrap Icons for Flutter
-version: 1.9.1
+version: 1.10.2
 homepage: https://github.com/ricardodalarme/Bootstrap-Icons-Flutter
 
 environment:
@@ -13,6 +13,6 @@ dependencies:
 
 flutter:
   fonts:
-    - family: Bootstrap Icons
+    - family: BootstrapIcons
       fonts:
-        - asset: fonts/bootstrap-icons.ttf
+        - asset: fonts/BootstrapIcons.ttf
