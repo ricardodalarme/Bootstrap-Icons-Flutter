@@ -1,0 +1,23 @@
+name: Test
+on: push
+
+jobs:
+  run-action:
+    name: Run action
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts/test
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn start
