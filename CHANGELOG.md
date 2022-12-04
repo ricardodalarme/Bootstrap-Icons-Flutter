@@ -3,7 +3,7 @@
 - Updated to Bootstrap Icons v1.10.2.
 - BREAKING CHANGE: changed the prefix of icons that started with number from 'number' to '$'
 
-- ## 1.9.1
+## 1.9.1
 
 - Updated to Bootstrap Icons v1.9.1.
 
