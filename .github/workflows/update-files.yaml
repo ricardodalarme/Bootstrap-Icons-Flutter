@@ -1,0 +1,58 @@
+name: Upgrade Version
+
+on: workflow_dispatch
+
+jobs:
+  run-action:
+    name: Run action
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts/upgrade_version
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.TAG_TOKEN }}
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn start
+
+      - name: Get version name
+        id: get_version_name
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: twbs/icons
+          excludes: prerelease, draft
+
+      - name: Extract version code
+        run: |
+          VERSION_CODE=$(echo "${{steps.get_version_name.outputs.release}}" | cut -d'v' -f2)
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_ENV"
+
+      - name: Update CHANGELOG.md
+        run: |
+          TEXT="## [${{env.version_code}}]\n\n- Updated to Bootstrap Icons ${{steps.get_version_name.outputs.release}}.\n\n"
+          sed -i "1s/^/$TEXT/" ./../../CHANGELOG.md
+
+      - name: Update YAML Version
+        uses: Dbono-dev/yaml-action@v1.0.3
+        with:
+          changes: |
+            {
+              "version": "${{ env.version_code }}"
+            }
+          commentOutDevDependencies: "true"
+
+      - name: Commit files
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "chore: upgrade version to ${{ steps.get_version_name.outputs.release }}"
