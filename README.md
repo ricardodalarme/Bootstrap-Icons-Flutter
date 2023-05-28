@@ -7,7 +7,7 @@
 <h3 align="center"><a href="https://pub.dev/packages/bootstrap_icons">Bootstrap Icons for Flutter</a></h3>
 
 <p align="center">
-  Implementation of Bootstrap Icons v1.10.2 in Flutter with over 1,600 icons..
+  Implementation of Bootstrap Icons in Flutter with over 1,600 icons.
   <br>
   <a href="https://icons.getbootstrap.com/"><strong>Explore Bootstrap Icons »</strong></a>
   <br>
@@ -18,11 +18,18 @@
 
 ### Installation
 
-Add this to your package's pubspec.yaml file:
+## Installation
+
+Add this to your package's `pubspec.yaml` file:
 
 ```yaml
-dependencies:
-  bootstrap_icons: ^1.10.2
+bootstrap_icons: ...
+```
+
+**OR** run
+
+```yaml
+flutter pub add bootstrap_icons
 ```
 
 ### Usage
