@@ -39,7 +39,7 @@ jobs:
 
       - name: Update CHANGELOG.md
         run: |
-          TEXT="## [${{env.version_code}}]\n\n- Updated to Bootstrap Icons ${{steps.get_version_name.outputs.release}}.\n\n"
+          TEXT="## ${{env.version_code}}\n\n- Updated to Bootstrap Icons ${{steps.get_version_name.outputs.release}}.\n\n"
           sed -i "1s/^/$TEXT/" ./../../CHANGELOG.md
 
       - name: Update YAML Version

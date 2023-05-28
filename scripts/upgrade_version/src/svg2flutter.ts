@@ -11,6 +11,7 @@ const Options = {
   dartOutput: '../../lib/',
   fontOutput: '../../fonts/',
   fontName: 'BootstrapIcons',
+  fontPackage: 'bootstrap_icons',
   height: 512,
 };
 
@@ -20,7 +21,8 @@ type Icon = {
 };
 
 export default async function () {
-  const { input, dartOutput, fontOutput, fontName, height } = Options;
+  const { input, dartOutput, fontOutput, fontName, fontPackage, height } =
+    Options;
 
   console.log('Generating font from SVGs');
 
@@ -43,7 +45,7 @@ export default async function () {
 
   console.log('Generating Dart file');
   const icons = iconsFromGlyphsData(glyphsData);
-  const fileContent = generateFileContent(fontName, icons);
+  const fileContent = generateFileContent(fontName, fontPackage, icons);
 
   fs.writeFileSync(
     path.join(dartOutput, snakeCase(fontName) + '.dart'),
@@ -73,13 +75,17 @@ function iconsFromGlyphsData(data: GlyphData[]): Icon[] {
   return icons;
 }
 
-function generateFileContent(fontName: string, icons: Icon[]) {
+function generateFileContent(
+  fontName: string,
+  fontPackage: string,
+  icons: Icon[],
+) {
   let content = `library ${snakeCase(fontName)};\n`;
   content += `\nimport 'package:flutter/widgets.dart';\n`;
   content += `
 class _${fontName}IconData extends IconData {
   const _${fontName}IconData(int codePoint)
-      : super(codePoint, fontFamily: "${fontName}");
+      : super(codePoint, fontFamily: "${fontName}", fontPackage: "${fontPackage}");
 }
 `;
   content += `\nabstract class ${fontName} {\n`;

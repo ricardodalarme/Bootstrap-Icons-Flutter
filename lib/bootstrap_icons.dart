@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 
 class _BootstrapIconsIconData extends IconData {
   const _BootstrapIconsIconData(int codePoint)
-      : super(codePoint, fontFamily: "BootstrapIcons");
+      : super(codePoint,
+            fontFamily: "BootstrapIcons", fontPackage: "bootstrap_icons");
 }
 
 abstract class BootstrapIcons {
