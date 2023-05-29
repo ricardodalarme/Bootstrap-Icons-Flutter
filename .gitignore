@@ -77,5 +77,4 @@ build/
 
 # Scripts
 node_modules
-lib
 .env
