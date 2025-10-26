@@ -1,6 +1,6 @@
+import fs from 'fs';
 import git from 'isomorphic-git';
 import http from 'isomorphic-git/http/node';
-import fs from 'fs';
 
 async function cloneRepo(): Promise<void> {
   console.log('Cloning the repository');

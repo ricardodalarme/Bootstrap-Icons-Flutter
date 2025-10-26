@@ -1,10 +1,9 @@
-import webfont from 'webfont';
-import path from 'path';
-import fs from 'fs';
-
 import { snakeCase } from 'change-case';
+import fs from 'fs';
+import path from 'path';
+import webfont from 'webfont';
+import type { GlyphData } from 'webfont/dist/src/types';
 import normalizeName from './utils/normalizeName';
-import { GlyphData } from 'webfont/dist/src/types';
 
 const Options = {
   input: './icons/icons/',
@@ -41,14 +40,14 @@ export default async function () {
   }
 
   console.log('Generating TTF file');
-  fs.writeFileSync(path.join(fontOutput, fontName + '.ttf'), ttf);
+  fs.writeFileSync(path.join(fontOutput, `${fontName}.ttf`), ttf);
 
   console.log('Generating Dart file');
   const icons = iconsFromGlyphsData(glyphsData);
   const fileContent = generateFileContent(fontName, fontPackage, icons);
 
   fs.writeFileSync(
-    path.join(dartOutput, snakeCase(fontName) + '.dart'),
+    path.join(dartOutput, `${snakeCase(fontName)}.dart`),
     fileContent,
   );
 }

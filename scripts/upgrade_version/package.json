@@ -6,10 +6,11 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc && node lib/index.js",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "biome format --write",
     "type-check": "tsc --noEmit --incremental",
-    "lint-check": "eslint --max-warnings 0",
-    "lint": "run-s type-check lint-check"
+    "lint-check": "biome check",
+    "lint": "run-s type-check lint-check",
+    "lint:fix": "biome check --fix"
   },
   "keywords": [],
   "author": "",
@@ -25,12 +26,9 @@
     "webfont": "^11.2.26"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.0",
     "@types/node": "^20",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "eslint": "^8.41.0",
     "npm-run-all": "4.1.5",
-    "prettier": "^2.8.8",
     "typescript": "5.9.3"
   }
 }
