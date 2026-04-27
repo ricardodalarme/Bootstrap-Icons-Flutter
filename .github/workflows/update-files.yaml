@@ -10,7 +10,7 @@ jobs:
       run:
         working-directory: ./scripts/upgrade_version
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.TAG_TOKEN }}
 
@@ -43,7 +43,7 @@ jobs:
           sed -i "1s/^/$TEXT/" ./../../CHANGELOG.md
 
       - name: Update YAML Version
-        uses: Dbono-dev/yaml-action@v1.0.3
+        uses: Dbono-dev/yaml-action@v1.0.4
         with:
           changes: |
             {
@@ -52,7 +52,7 @@ jobs:
           commentOutDevDependencies: "true"
 
       - name: Commit files
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           default_author: github_actions
           message: "chore: upgrade version to ${{ steps.get_version_name.outputs.release }}"

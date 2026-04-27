@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Auto Tag when the pubspec.yaml version changes"
         uses: ricardodalarme/action-autotag@main
