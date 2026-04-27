@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: "Auto Tag when the pubspec.yaml version changes"
-        uses: jacopocarlini/action-autotag@3.0.0
+        uses: ricardodalarme/action-autotag@main
         with:
           GITHUB_TOKEN: ${{ secrets.TAG_TOKEN }}
           tag_prefix: "v"
