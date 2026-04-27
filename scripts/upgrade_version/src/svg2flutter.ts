@@ -81,17 +81,11 @@ function generateFileContent(
 ) {
   let content = `library ${snakeCase(fontName)};\n`;
   content += `\nimport 'package:flutter/widgets.dart';\n`;
-  content += `
-class _${fontName}IconData extends IconData {
-  const _${fontName}IconData(int codePoint)
-      : super(codePoint, fontFamily: "${fontName}", fontPackage: "${fontPackage}");
-}
-`;
   content += `\nabstract class ${fontName} {\n`;
   content += `  ${fontName}._();\n\n`;
 
   icons.forEach(({ name, codepoint }) => {
-    content += `  static const ${name} = _${fontName}IconData(0x${codepoint});\n`;
+    content += `  static const ${name} = IconData(0x${codepoint}, fontFamily: "${fontName}", fontPackage: "${fontPackage}");\n`;
   });
   content += '}\n';
 
