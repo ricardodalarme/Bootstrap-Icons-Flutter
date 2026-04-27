@@ -1,13 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
-    "declaration": true,
-    "outDir": "./lib",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": false,
+    "target": "es2025",
+    "outDir": "./build",
+    "rootDir": "./src",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
 }
