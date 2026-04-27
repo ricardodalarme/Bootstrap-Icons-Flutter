@@ -1,5 +1,5 @@
 name: bootstrap_icons
-description: Bootstrap Icons for Flutter
+description: Implementation of Bootstrap Icons in Flutter with over 2,000 icons.
 version: 1.13.1
 homepage: https://github.com/ricardodalarme/Bootstrap-Icons-Flutter
 

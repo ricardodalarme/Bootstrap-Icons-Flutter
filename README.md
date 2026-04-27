@@ -7,7 +7,7 @@
 <h3 align="center"><a href="https://pub.dev/packages/bootstrap_icons">Bootstrap Icons for Flutter</a></h3>
 
 <p align="center">
-  Implementation of Bootstrap Icons in Flutter with over 1,600 icons.
+  Implementation of Bootstrap Icons in Flutter with over 2,000 icons.
   <br>
   <a href="https://icons.getbootstrap.com/"><strong>Explore Bootstrap Icons »</strong></a>
   <br>
