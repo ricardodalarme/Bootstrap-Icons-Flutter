@@ -1,6 +1,12 @@
 name: Upgrade Version
 
-on: workflow_dispatch
+# Runs weekly and no-ops when the package already matches the latest
+# twbs/icons release, so new upstream releases are picked up without a
+# manual dispatch. Still dispatchable on demand.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Monday 06:00 UTC
 
 jobs:
   run-action:
@@ -14,17 +20,6 @@ jobs:
         with:
           token: ${{ secrets.TAG_TOKEN }}
 
-      - name: Use Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn start
-
       - name: Get version name
         id: get_version_name
         uses: pozetroninc/github-action-get-latest-release@master
@@ -37,12 +32,43 @@ jobs:
           VERSION_CODE=$(echo "${{steps.get_version_name.outputs.release}}" | cut -d'v' -f2)
           echo "version_code=$VERSION_CODE" >> "$GITHUB_ENV"
 
+      - name: Check if already up to date
+        id: check
+        run: |
+          current=$(grep -E '^version:' ./../../pubspec.yaml | awk '{print $2}')
+          # A package-side hotfix (e.g. 1.13.1+1) still tracks the same
+          # upstream release; ignore the build number when comparing.
+          current="${current%%+*}"
+          if [ "$current" = "$version_code" ]; then
+            echo "Already on Bootstrap Icons v$current; nothing to do."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Bootstrap Icons v$version_code available (current: v$current)."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Use Node
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: yarn install
+
+      - name: Build
+        if: steps.check.outputs.changed == 'true'
+        run: yarn start
+
       - name: Update CHANGELOG.md
+        if: steps.check.outputs.changed == 'true'
         run: |
           TEXT="## ${{env.version_code}}\n\n- Updated to Bootstrap Icons ${{steps.get_version_name.outputs.release}}.\n\n"
           sed -i "1s/^/$TEXT/" ./../../CHANGELOG.md
 
       - name: Update YAML Version
+        if: steps.check.outputs.changed == 'true'
         uses: Dbono-dev/yaml-action@v1.0.3
         with:
           changes: |
@@ -52,6 +78,7 @@ jobs:
           commentOutDevDependencies: "true"
 
       - name: Commit files
+        if: steps.check.outputs.changed == 'true'
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
