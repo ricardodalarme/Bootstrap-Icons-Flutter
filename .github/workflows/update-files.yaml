@@ -14,16 +14,16 @@ jobs:
         with:
           token: ${{ secrets.TAG_TOKEN }}
 
-      - name: Use Node
-        uses: actions/setup-node@v7
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
         with:
-          node-version: 20
+          sdk: stable
 
       - name: Install dependencies
-        run: yarn install
+        run: dart pub get
 
-      - name: Build
-        run: yarn start
+      - name: Build font and Dart bindings
+        run: dart run bin/update_version.dart
 
       - name: Get version name
         id: get_version_name

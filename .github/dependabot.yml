@@ -11,3 +11,11 @@ updates:
       github-actions:
         patterns:
           - "*"
+
+  - package-ecosystem: pub
+    directory: /tools/update_version
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
+      include: scope

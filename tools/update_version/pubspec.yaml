@@ -1,0 +1,13 @@
+name: update_version
+description: Tool for downloading Bootstrap Icons, building font assets, and generating Flutter bindings.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  icon_font_generator: ^4.1.0
+  path: ^1.9.1
+  recase: ^4.1.0
+  yaml: ^3.1.3
