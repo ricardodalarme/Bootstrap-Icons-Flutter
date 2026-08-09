@@ -22,7 +22,7 @@ export function generateDartFile(options: GenerateDartFileOptions): string {
   icons.forEach(({ name, svgName, codepoint }) => {
     content += `  /// Bootstrap icon \`${name}\` (\`${svgName}.svg\`).\n`;
     content += `  ///\n`;
-    content += `  /// ![$svgName](https://raw.githubusercontent.com/twbs/icons/v${version}/icons/${svgName}.svg)\n`;
+    content += `  /// ![${svgName}](https://raw.githubusercontent.com/twbs/icons/v${version}/icons/${svgName}.svg)\n`;
     content += `  static const ${name} = IconData(0x${codepoint}, fontFamily: "${fontName}", fontPackage: "${fontPackage}");\n\n`;
   });
   content += '}\n';

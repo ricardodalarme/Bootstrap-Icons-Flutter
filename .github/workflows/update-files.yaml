@@ -47,19 +47,17 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Use Node
+      - name: Setup Bun
         if: steps.check.outputs.changed == 'true'
-        uses: actions/setup-node@v6
-        with:
-          node-version: 20
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         if: steps.check.outputs.changed == 'true'
-        run: yarn install
+        run: bun install
 
       - name: Build
         if: steps.check.outputs.changed == 'true'
-        run: yarn start
+        run: bun start
 
       - name: Update CHANGELOG.md
         if: steps.check.outputs.changed == 'true'

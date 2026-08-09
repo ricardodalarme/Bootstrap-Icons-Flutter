@@ -7,6 +7,9 @@ async function cloneRepo(): Promise<void> {
   const dir = `./icons`;
   const url = `https://github.com/twbs/icons.git`;
 
+  if (fs.existsSync(dir)) {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
   fs.mkdirSync(dir, { recursive: true });
 
   await git.clone({

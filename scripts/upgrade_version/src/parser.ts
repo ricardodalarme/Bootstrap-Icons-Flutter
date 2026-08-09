@@ -42,11 +42,15 @@ function iconsFromGlyphsData(data: GlyphData[]): Icon[] {
       return;
     }
     const { name, unicode } = metadata;
+    const char = unicode[0];
+    if (char === undefined) {
+      return;
+    }
 
     icons.push({
       name: normalizeName(name),
       svgName: name,
-      codepoint: toHex(unicode[0]),
+      codepoint: toHex(char),
     });
   });
   return icons;

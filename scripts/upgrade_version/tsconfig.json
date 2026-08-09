@@ -1,23 +1,42 @@
 {
   "compilerOptions": {
+    // Environment setup & latest features
+    "lib": [
+      "ESNext"
+    ],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleDetection": "force",
     "allowJs": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "commonjs",
+    "types": [
+      "bun"
+    ],
+    // Bundler mode
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    // Best practices
     "strict": true,
-    "strictPropertyInitialization": false,
-    "useUnknownInCatchVariables": false,
-    "target": "es2025",
-    "outDir": "./build",
-    "rootDir": "./src",
-    "types": ["node"],
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    // Some stricter flags
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }
