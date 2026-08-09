@@ -1,7 +1,8 @@
-import webfont from 'webfont';
-import type { GlyphData } from 'webfont/dist/src/types';
+import { type Result, webfont } from 'webfont';
 import type { Icon, ParseIconsOptions, ParseIconsResult } from './types';
 import normalizeName from './utils/normalizeName';
+
+type GlyphData = NonNullable<Result['glyphsData']>[number];
 
 export async function parseIcons(
   options: ParseIconsOptions,
