@@ -20,17 +20,6 @@ jobs:
         with:
           token: ${{ secrets.TAG_TOKEN }}
 
-      - name: Use Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn start
-
       - name: Get version name
         id: get_version_name
         uses: pozetroninc/github-action-get-latest-release@master
@@ -79,6 +68,7 @@ jobs:
           sed -i "1s/^/$TEXT/" ./../../CHANGELOG.md
 
       - name: Update YAML Version
+        if: steps.check.outputs.changed == 'true'
         uses: Dbono-dev/yaml-action@v1.0.4
         with:
           changes: |
@@ -88,6 +78,7 @@ jobs:
           commentOutDevDependencies: "true"
 
       - name: Commit files
+        if: steps.check.outputs.changed == 'true'
         uses: EndBug/add-and-commit@v10
         with:
           default_author: github_actions
