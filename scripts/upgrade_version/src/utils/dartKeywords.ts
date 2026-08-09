@@ -1,4 +1,4 @@
-const Set<String> dartKeywords = {
+const dartKeywords: string[] = [
   'Function',
   'abstract',
   'as',
@@ -62,4 +62,6 @@ const Set<String> dartKeywords = {
   'while',
   'with',
   'yield',
-};
+];
+
+export default dartKeywords;

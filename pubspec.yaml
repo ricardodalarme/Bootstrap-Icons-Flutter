@@ -19,7 +19,7 @@ flutter:
   fonts:
     - family: BootstrapIcons
       fonts:
-        - asset: fonts/BootstrapIcons.otf
+        - asset: fonts/BootstrapIcons.ttf
 
 screenshots:
   - description: "BootstrapIcons hero"

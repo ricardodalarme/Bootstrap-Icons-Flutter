@@ -78,5 +78,3 @@ pubspec.lock
 # Scripts
 node_modules
 .env
-tool/update_version/icons
-
